@@ -1,32 +1,44 @@
 <?php 
-if(isset($_POST['disp'])){ 
-$s=$_POST['s']; $ch=$_POST['ch']; 
-switch($ch){ 
-case 'STRING LENGTH': $res=strlen($s); break; 
-case 'WORD COUNT': $res=str_word_count($s); break; 
-case 'STRING REVERSE': $res=strrev($s); break; 
-case 'POSITION OF A CHARACTER': $res=strpos($s,"a"); break; 
-case 'STRING REPLACE': $res=str_replace("hello","world",$s); break; 
-case 'STRING SPLIT': $res=implode(" ",str_split($s)); break; 
+if(isset($_POST['disp'])) 
+{ 
+$s=$_POST['s']; 
+$ch=$_POST['ch']; 
+switch($ch) 
+{ 
+case 'STRING LENGTH': 
+$res= strlen($s); 
+break; 
+case 'WORD COUNT': 
+$res= str_word_count($s); 
+break; 
+case 'STRING REVERSE': 
+$res=strrev($s); 
+break; 
+case 'POSITION OF A CHARACTER': 
+$res=strpos($s,"a"); 
+break; 
+case 'STRING REPLACE': 
+str_replace("hello", "world", $s); 
+break; 
+case 'STRING SPLIT': 
+$res = implode(" ", str_split($s, 1)); 
+break; 
 case 'PASSWORD GENERATOR': 
-$res=substr(str_shuffle("1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghij
- klmnopqrstuvwxyz"),0,7); break; 
-} 
+$data="1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"; 
+$res= substr(str_shuffle($data),0,7); 
+break; } 
 } 
 ?> 
 <html> 
-<body bgcolor=”lightpink”> 
-<h2 style="text-align:center;">STRING HANDLING</h2> 
-<form method="post"> 
-<table border="1" align="center" cellpadding="8"> 
-<tr> 
-<td>Enter String</td> 
-<td><input type="text" name="s"></td> 
-</tr> 
-<tr> 
-<td>Select Choice</td> 
-<td> 
-<select name="ch"> 
+<body bgcolor="cyan"> 
+<form action="" method="post"> 
+<table align="center" border="3" width="20%"><br><br> 
+<tr bgcolor="forestgreen"><td align="center" colspan="2"> 
+<font color="white" face="arial black" size="5">STRING HANDLING</font></td></tr> 
+<tr><td><input type="button" value="Enter String"></td> 
+<td><input type="text" name="s"></td></tr> 
+<tr><td><input type="button" value="Select Your Choice"></td> 
+<td><center><select name="ch"> 
 <option>STRING LENGTH</option> 
 <option>WORD COUNT</option> 
 <option>STRING REVERSE</option> 
@@ -34,18 +46,7 @@ $res=substr(str_shuffle("1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghij
 <option>STRING REPLACE</option> 
 <option>STRING SPLIT</option> 
 <option>PASSWORD GENERATOR</option> 
-</select> 
-</td> 
-    </tr> 
-        <tr> 
-       
-       <td> 
-      <input type="submit" name="disp" value="RESULT"></td> 
-      <td> 
-      <input type="text" value="<?php echo @$res; ?>" readonly></td> 
-    </tr> 
- 
-  </table> 
-</form> 
-</body> 
-</html> 
+</center></select></td></tr> 
+<tr><td><input type="submit" value=" RESULT " name="disp"></td> 
+<td><input type="text" value="<?php echo @$res; ?>" readonly="true"/> 
+</td></tr></table>
